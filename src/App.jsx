@@ -1,5 +1,10 @@
 import React from "react";
+import { AppLetters } from "./components/AppLetters";
 
 export const App = () => {
-  return <div>App</div>;
+  return (
+    <>
+      <AppLetters />
+    </>
+  );
 };

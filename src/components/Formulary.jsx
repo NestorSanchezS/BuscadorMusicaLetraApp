@@ -1,11 +1,8 @@
 import React from "react";
-import { useState } from "react";
+import { useSearched } from "../hooks/useSearched";
 
 export const Formulary = () => {
-  const [dataForm, setDataForm] = useState({
-    artist: "",
-    music: "",
-  });
+  const { dataForm, handleChangeData } = useSearched();
   return (
     <form>
       <legend>Busca por Artista y Cancion</legend>
@@ -17,7 +14,7 @@ export const Formulary = () => {
             name="artist"
             placeholder="Nombre Artista"
             value={dataForm.artist}
-            onChange={({ target }) => setDataForm(target.value)}
+            onChange={({ target }) => handleChangeData({ target })}
           />
         </div>
         <div>
@@ -27,7 +24,7 @@ export const Formulary = () => {
             name="music"
             placeholder="Nombre cancion"
             value={dataForm.music}
-            onChange={({ target }) => setDataForm(target.value)}
+            onChange={({ target }) => handleChangeData({ target })}
           />
         </div>
         <input type="submit" value="Search" />

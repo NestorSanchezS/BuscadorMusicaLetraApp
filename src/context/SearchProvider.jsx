@@ -16,9 +16,12 @@ export const SearchProvider = ({ children }) => {
     });
   };
 
+  const letterSearch = () => {
+    console.log("searched...");
+  };
   return (
     <SearchContext.Provider
-      value={{ dataForm, handleChangeData, error, setError }}
+      value={{ dataForm, handleChangeData, error, setError, letterSearch }}
     >
       {children}
     </SearchContext.Provider>

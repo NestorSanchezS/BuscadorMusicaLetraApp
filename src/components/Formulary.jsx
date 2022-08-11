@@ -1,10 +1,20 @@
 import React from "react";
 import { useSearched } from "../hooks/useSearched";
+import { Error } from "./Error";
 
 export const Formulary = () => {
-  const { dataForm, handleChangeData } = useSearched();
+  const { dataForm, handleChangeData, error, setError } = useSearched();
+
+  const handleSubmitData = (e) => {
+    e.preventDefault();
+    if (Object.values(dataForm).includes("")) {
+      setError(true);
+      return;
+    }
+    setError(false);
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmitData}>
       <legend>Busca por Artista y Cancion</legend>
       <div className="form-grid">
         <div>

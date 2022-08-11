@@ -7,6 +7,7 @@ export const SearchProvider = ({ children }) => {
     artist: "",
     music: "",
   });
+  const [error, setError] = useState(false);
 
   const handleChangeData = ({ target }) => {
     setDataForm({
@@ -16,7 +17,9 @@ export const SearchProvider = ({ children }) => {
   };
 
   return (
-    <SearchContext.Provider value={{ dataForm, handleChangeData }}>
+    <SearchContext.Provider
+      value={{ dataForm, handleChangeData, error, setError }}
+    >
       {children}
     </SearchContext.Provider>
   );

@@ -4,8 +4,8 @@ export const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
   const [dataForm, setDataForm] = useState({
-    artist: "",
-    music: "",
+    artista: "",
+    cancion: "",
   });
   const [error, setError] = useState(false);
 
@@ -16,8 +16,14 @@ export const SearchProvider = ({ children }) => {
     });
   };
 
-  const letterSearch = () => {
-    console.log("searched...");
+  const letterSearch = async (search) => {
+    const { artista, cancion } = dataForm;
+    try {
+      const url = `https://api.lyrics.ovh/v1/${artista}/${cancion}`;
+      console.log(url);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <SearchContext.Provider

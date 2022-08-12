@@ -1,9 +1,8 @@
 import React from "react";
 import { useSearched } from "../hooks/useSearched";
-import { Error } from "./Error";
 
 export const Formulary = () => {
-  const { dataForm, handleChangeData, error, setError } = useSearched();
+  const { dataForm, handleChangeData, setError, letterSearch } = useSearched();
 
   const handleSubmitData = (e) => {
     e.preventDefault();
@@ -12,6 +11,8 @@ export const Formulary = () => {
       return;
     }
     setError(false);
+
+    letterSearch(dataForm);
   };
   return (
     <form onSubmit={handleSubmitData}>
@@ -21,9 +22,9 @@ export const Formulary = () => {
           <label>Artista</label>
           <input
             type="text"
-            name="artist"
+            name="artista"
             placeholder="Nombre Artista"
-            value={dataForm.artist}
+            value={dataForm.artista}
             onChange={({ target }) => handleChangeData({ target })}
           />
         </div>
@@ -31,9 +32,9 @@ export const Formulary = () => {
           <label>Cancion</label>
           <input
             type="text"
-            name="music"
+            name="cancion"
             placeholder="Nombre cancion"
-            value={dataForm.music}
+            value={dataForm.cancion}
             onChange={({ target }) => handleChangeData({ target })}
           />
         </div>

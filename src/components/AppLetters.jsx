@@ -6,7 +6,6 @@ import { Formulary } from "./Formulary";
 export const AppLetters = () => {
   const { error } = useSearched();
 
-  console.log(error);
   return (
     <>
       <header>Busqueda de letras de Canciones</header>

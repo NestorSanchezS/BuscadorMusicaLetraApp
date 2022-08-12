@@ -5,7 +5,7 @@ import { Formulary } from "./Formulary";
 import { Lirycs } from "./Lirycs";
 
 export const AppLetters = () => {
-  const { error, lirycs } = useSearched();
+  const { error, lirycs, loading } = useSearched();
 
   return (
     <>
@@ -16,6 +16,8 @@ export const AppLetters = () => {
           <Error>Coloque nombre y cancion</Error>
         ) : lirycs ? (
           <Lirycs />
+        ) : loading ? (
+          "Cargando..."
         ) : (
           <p className="text-center">Busca letras de tus artistas favoritos</p>
         )}

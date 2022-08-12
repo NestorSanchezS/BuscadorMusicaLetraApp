@@ -3,6 +3,7 @@ import { useSearched } from "../hooks/useSearched";
 import { Error } from "./Error";
 import { Formulary } from "./Formulary";
 import { Lirycs } from "./Lirycs";
+import { Spinner } from "./Spinner";
 
 export const AppLetters = () => {
   const { error, lirycs, loading } = useSearched();
@@ -17,7 +18,7 @@ export const AppLetters = () => {
         ) : lirycs ? (
           <Lirycs />
         ) : loading ? (
-          "Cargando..."
+          <Spinner />
         ) : (
           <p className="text-center">Busca letras de tus artistas favoritos</p>
         )}

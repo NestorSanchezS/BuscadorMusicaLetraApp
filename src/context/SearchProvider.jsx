@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { createContext, useState } from "react";
 
 export const SearchContext = createContext();
@@ -8,6 +9,7 @@ export const SearchProvider = ({ children }) => {
     cancion: "",
   });
   const [error, setError] = useState(false);
+  const [lirycs, setLyrics] = useState("");
 
   const handleChangeData = ({ target }) => {
     setDataForm({
@@ -21,6 +23,8 @@ export const SearchProvider = ({ children }) => {
     try {
       const url = `https://api.lyrics.ovh/v1/${artista}/${cancion}`;
       console.log(url);
+      const { data } = await axios.get(url);
+      setLyrics(data.lyrics);
     } catch (error) {
       console.log(error);
     }

@@ -9,7 +9,7 @@ export const SearchProvider = ({ children }) => {
     cancion: "",
   });
   const [error, setError] = useState(false);
-  const [lirycs, setLyrics] = useState("");
+  const [lirycs, setLirycs] = useState("");
 
   const handleChangeData = ({ target }) => {
     setDataForm({
@@ -24,14 +24,22 @@ export const SearchProvider = ({ children }) => {
       const url = `https://api.lyrics.ovh/v1/${artista}/${cancion}`;
       console.log(url);
       const { data } = await axios.get(url);
-      setLyrics(data.lyrics);
+      console.log(data);
+      setLirycs(data.lyrics);
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <SearchContext.Provider
-      value={{ dataForm, handleChangeData, error, setError, letterSearch }}
+      value={{
+        dataForm,
+        handleChangeData,
+        error,
+        setError,
+        letterSearch,
+        lirycs,
+      }}
     >
       {children}
     </SearchContext.Provider>
